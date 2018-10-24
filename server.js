@@ -91,7 +91,7 @@ const typeDefs = gql`
                         balance: Int
                         contact_name: String):Transaction
 
-        deleteResident(_id):String
+        deleteResident(_id: ID!):String
     }
 `;
 
