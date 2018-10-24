@@ -5,8 +5,7 @@ const { find, filter } = require('lodash');
 
 const typeDefs = gql`
     type Resident {
-        _id: ID!
-        identity_document: Int
+        _id: ID
         name: String!
         birth_date: String
         admission_date: String!
@@ -48,6 +47,52 @@ const typeDefs = gql`
         transaction(idNumber: String!): Transaction
         transactions: [Transaction]
     }
+
+    type Mutation {
+        newResident(    name: String!
+                        birth_date: String!
+                        admission_date: String!
+                        gender: String!
+                        state: String
+                        contact_name: String
+                        contact_phone: Int
+                        diseases: String): Resident
+        newReport(      report_type: Int
+                        created_at: String
+                        IP: String): Report
+        newReportType(  Type: String): Report_type
+        newTransaction( type_transation_id: Int!
+                        total_amount: Int
+                        observation: String
+                        balance: Int
+                        contact_name: String
+                        quantity: Int
+                        subtotal: Int): String
+
+        editResident(   _id: ID!
+                        name: String
+                        birth_date: String
+                        admission_date: String
+                        gender: String
+                        state: String
+                        contact_name: String
+                        contact_phone: Int
+                        diseases: String): Resident
+        editReport(     id: ID!
+                        report_type: Int
+                        created_at: String
+                        IP: String): Report
+        editReportType( id: ID!
+                        Type: String): Report_type
+        editTransaction(id: ID!
+                        type_transation_id: Int
+                        total_amount: Int
+                        observation: String
+                        balance: Int
+                        contact_name: String):Transaction
+
+        deleteResident(_id):String
+    }
 `;
 
 const resolvers = {
@@ -61,9 +106,22 @@ const resolvers = {
         transaction: (root, { idNumber }, { dataSources }) => dataSources.TransactionAPI.getATransaction(idNumber),
         transactions: (root, args, { dataSources }) => dataSources.TransactionAPI.getAllTransactions(),
     },
+    Mutation: {
+        newResident: (root, args, { dataSources }) =>  dataSources.ResidentAPI.createAResident(args),
+        newReport: (root, args, { dataSources }) =>  dataSources.ReportsAPI.createAReport(args),
+        newReportType: (root, args, { dataSources }) =>  dataSources.ReportsAPI.createAReportType(args),
+        newTransaction: (root, args, { dataSources }) =>  dataSources.TransactionAPI.createATransaction(args),
+
+        editResident: (root, args, { dataSources }) =>  dataSources.ResidentAPI.editAResident(args),
+        editReport: (root, args, { dataSources }) =>  dataSources.ReportsAPI.editAReport(args),
+        editReportType: (root, args, { dataSources }) =>  dataSources.ReportsAPI.editAReportType(args),
+        editTransaction: (root, args, { dataSources }) =>  dataSources.TransactionAPI.editATransaction(args),
+
+        deleteResident: (root, args, { dataSources }) =>  dataSources.ResidentAPI.deleteATransaction(args),
+    },
     Report: {
         report_type: (root, { report_type_id }, { dataSources }) =>  dataSources.ReportsAPI.getAType(root.report_type_id),
-    }
+    },
 };
 
 const server = new ApolloServer({
