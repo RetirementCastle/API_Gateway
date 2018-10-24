@@ -63,8 +63,9 @@ export class ResidentAPI extends RESTDataSource {
         })
     }
 
-    async deleteResident(idNumber) {
-        return "no"
+    async deleteAResident(idNumber) {
+        this.delete('residents/'+idNumber)
+        return "Deleted successfully"
     }
 };
 
@@ -161,6 +162,16 @@ export class ReportsAPI extends RESTDataSource {
             })
         })
     }
+
+    async deleteAReport(idNumber) {
+        this.delete('reports/'+idNumber)
+        return "Deleted successfully"
+    }
+
+    async deleteAReportType(idNumber) {
+        this.delete('report_types/'+idNumber)
+        return "Deleted successfully"
+    }
 };
 
 export class TransactionAPI extends RESTDataSource {
@@ -223,5 +234,10 @@ export class TransactionAPI extends RESTDataSource {
                 console.error(error)
             })
         })
+    }
+
+    async deleteATransaction(idNumber) {
+        this.delete('transaction/'+idNumber)
+        return "Deleted successfully"
     }
 };
