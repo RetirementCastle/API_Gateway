@@ -99,7 +99,7 @@ export class ReportsAPI extends RESTDataSource {
         args.baseURL = this.baseURL
         return new Promise(function(resolve,reject) {
             axios.post(args.baseURL+'reports', {
-                report_type: args.type,
+                report_type_id: args.report_type,
                 created_at: args.created_at,
                 IP: args.IP,
             })
@@ -177,7 +177,7 @@ export class ReportsAPI extends RESTDataSource {
 export class TransactionAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://35.199.81.116:8000/';
+        this.baseURL = 'http://localhost:8000/';
     }
 
     async getAllTransactions() {
