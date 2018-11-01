@@ -68,6 +68,7 @@ const typeDefs = gql`
     type Nursinghome {
         idnursinghome: ID!
         name: String
+        branches: [Branch]
     }
 
     type Branch {
@@ -254,6 +255,9 @@ const resolvers = {
     },
     Report: {
         report_type: (root, { report_type_id }, { dataSources }) =>  dataSources.ReportsAPI.getAType(root.report_type_id),
+    },
+    Nursinghome: {
+        branches: (root, { idnursinghome }, { dataSources }) =>  dataSources.NursingHomesAPI.getNursinghomesBranches(root.idnursinghome),
     },
 };
 

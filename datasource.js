@@ -490,4 +490,11 @@ export class NursingHomesAPI extends RESTDataSource {
         this.delete('branches/'+idNumber)
         return "Deleted successfully"
     }
+
+    async getNursinghomesBranches(idnursinghome) {
+        const result = await this.get('nursinghome/'+idnursinghome+'/branches');
+        console.log('nursinghome/'+idnursinghome+'/branches');
+
+        return result;
+    }
 };
