@@ -245,7 +245,7 @@ export class TransactionAPI extends RESTDataSource {
 export class EmployeeAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://b9ac0886.ngrok.io/';
+        this.baseURL = 'http://localhost:8005/';
     }
 
     async getAllEmployees() {
@@ -386,7 +386,7 @@ export class EmployeeAPI extends RESTDataSource {
 export class NursingHomesAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://e9ca7ec1.ngrok.io/';
+        this.baseURL = 'http://localhost:8087/';
     }
 
     async getAllNursingHomes() {
