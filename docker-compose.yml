@@ -1,0 +1,8 @@
+version: "2"
+services:
+  app:
+    container_name: api_gateway
+    restart: always
+    build: .
+    ports:
+      - "4000:4000"
