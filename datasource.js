@@ -5,7 +5,7 @@ const axios = require('axios')
 export class ResidentAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://localhost:3000/';
+        this.baseURL = 'node';
     }
 
     async getAllResidents() {
