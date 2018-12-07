@@ -5,7 +5,7 @@ const axios = require('axios')
 export class ResidentAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://localhost:3000/';
+        this.baseURL = 'http://node_be:3000/';
     }
 
     async getAllResidents() {
@@ -72,7 +72,7 @@ export class ResidentAPI extends RESTDataSource {
 export class ReportsAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://localhost:3030/';
+        this.baseURL = 'http://ruby_be:3030/';
     }
 
     async getAllReports() {
@@ -177,7 +177,7 @@ export class ReportsAPI extends RESTDataSource {
 export class TransactionAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://localhost:8000/';
+        this.baseURL = 'http://php_be:80/';
     }
 
     async getAllTransactions() {
@@ -245,7 +245,7 @@ export class TransactionAPI extends RESTDataSource {
 export class EmployeeAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://localhost:8005/';
+        this.baseURL = 'http://python_be:8005/';
     }
 
     async getAllEmployees() {
@@ -386,7 +386,7 @@ export class EmployeeAPI extends RESTDataSource {
 export class NursingHomesAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://localhost:8087/';
+        this.baseURL = 'http://go_be:8087/';
     }
 
     async getAllNursingHomes() {
