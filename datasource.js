@@ -188,7 +188,7 @@ export class ReportsAPI extends RESTDataSource {
 
     async editAReport(args) {
         if(this.checkToken(args.token)){
-            var object = await this.getAReport(args.id, token)
+            var object = await this.getAReport(args.id, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
@@ -211,7 +211,7 @@ export class ReportsAPI extends RESTDataSource {
 
     async editAReportType(args) {
         if(this.checkToken(args.token)){
-            var object = await this.getAType(args.id, token)
+            var object = await this.getAType(args.id, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
@@ -311,7 +311,7 @@ export class TransactionAPI extends RESTDataSource {
 
     async editATransaction(args) {
         if(this.checkToken(args.token)){
-            var object = await this.getATransaction(args.id, token)
+            var object = await this.getATransaction(args.id, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
@@ -453,7 +453,7 @@ export class EmployeeAPI extends RESTDataSource {
 
     async editAnEmployee(args) {
         if(this.checkToken(args.token)){
-            var object = await this.getAnEmployee(args.id, token);
+            var object = await this.getAnEmployee(args.id, args.token);
 
             args.baseURL = this.baseURL;
             return new Promise(function(resolve,reject) {
@@ -490,7 +490,7 @@ export class EmployeeAPI extends RESTDataSource {
 
     async editAnUser(args) {
         if(this.checkToken(args.token)){
-            var object = await this.getAnEmployee(args.id, token);
+            var object = await this.getAnEmployee(args.id, args.token);
 
             args.baseURL = this.baseURL;
             return new Promise(function(resolve,reject) {
@@ -626,7 +626,7 @@ export class NursingHomesAPI extends RESTDataSource {
 
     async editANursinghome(args) {
         if(this.checkToken(args.token)){
-            var object = await this.getANursingHome(args.id, token)
+            var object = await this.getANursingHome(args.id, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
@@ -647,7 +647,7 @@ export class NursingHomesAPI extends RESTDataSource {
 
     async editABranch(args) {
         if(this.checkToken(args.token)){
-            var object = await this.getABranch(args.id, token)
+            var object = await this.getABranch(args.id, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
