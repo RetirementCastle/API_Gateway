@@ -80,26 +80,27 @@ const typeDefs = gql`
     }
 
     type Query {
-        resident(idNumber: String!): Resident
-        residents: [Resident]
-        report(idNumber: Int!): Report
-        reports: [Report]
-        report_type(idNumber: Int!): Report_type
-        report_types: [Report_type]
-        transaction(idNumber: String!): Transaction
-        transactions: [Transaction]
-        employee(idNumber: ID!): Employee
-        employees: [Employee]
-        user(idNumber: ID!): User
-        users: [User]
-        nursinghome(idNumber: ID!): Nursinghome
-        nursinghomes: [Nursinghome]
-        branch(idNumber: ID!): Branch
-        branches: [Branch]
+        resident(token: String!, idNumber: String!): Resident
+        residents(token: String!): [Resident]
+        report(token: String!, idNumber: Int!): Report
+        reports(token: String!): [Report]
+        report_type(token: String!, idNumber: Int!): Report_type
+        report_types(token: String!): [Report_type]
+        transaction(token: String!, idNumber: String!): Transaction
+        transactions(token: String!): [Transaction]
+        employee(token: String!, idNumber: ID!): Employee
+        employees(token: String!): [Employee]
+        user(token: String!, idNumber: ID!): User
+        users(token: String!): [User]
+        nursinghome(token: String!, idNumber: ID!): Nursinghome
+        nursinghomes(token: String!): [Nursinghome]
+        branch(token: String!, idNumber: ID!): Branch
+        branches(token: String!): [Branch]
     }
 
     type Mutation {
-        newResident(    name: String!
+        newResident(    token:String!
+                        name: String!
                         birth_date: String!
                         admission_date: String!
                         gender: String!
@@ -107,18 +108,22 @@ const typeDefs = gql`
                         contact_name: String
                         contact_phone: Int
                         diseases: String): Resident
-        newReport(      report_type: Int
+        newReport(      token:String!
+                        report_type: Int
                         created_at: String
                         IP: String): Report
-        newReportType(  Type: String): Report_type
-        newTransaction( type_transation_id: Int!
+        newReportType(  token:String!
+                        Type: String): Report_type
+        newTransaction( token:String!
+                        type_transation_id: Int!
                         total_amount: Int
                         observation: String
                         balance: Int
                         contact_name: String
                         quantity: Int
                         subtotal: Int): String
-        newEmployee(    name: String
+        newEmployee(    token:String!
+                        name: String
                         age: Int
                         title: String
                         email: String
@@ -134,17 +139,21 @@ const typeDefs = gql`
                         operation: Int
                         created_at: String
                         last_login: String): String
-        newUser(        username: String
+        newUser(        token:String!
+                        username: String
                         password: String
                         token: String
                         nursinghome: ID  ): String
-        newNursinghome( name: String ): Nursinghome
-        newBranch(      address: String
+        newNursinghome( token:String!
+                        name: String ): Nursinghome
+        newBranch(      token:String!
+                        address: String
                         total_rooms: Int
                         available_rooms: Int
                         nursinghome_idnursinghome: Int  ): Branch
 
-        editResident(   _id: ID!
+        editResident(   token: String!
+                        _id: ID!
                         name: String
                         birth_date: String
                         admission_date: String
@@ -153,19 +162,23 @@ const typeDefs = gql`
                         contact_name: String
                         contact_phone: Int
                         diseases: String): Resident
-        editReport(     id: ID!
+        editReport(     token: String!
+                        id: ID!
                         report_type: Int
                         created_at: String
                         IP: String): Report
-        editReportType( id: ID!
+        editReportType( token: String!
+                        id: ID!
                         Type: String): Report_type
-        editTransaction(id: ID!
+        editTransaction(token: String!
+                        id: ID!
                         type_transation_id: Int
                         total_amount: Int
                         observation: String
                         balance: Int
                         contact_name: String):Transaction
-        editEmployee(   id: ID!
+        editEmployee(   token: String!
+                                        id: ID!
                         name: String
                         age: Int
                         title: String
@@ -182,48 +195,51 @@ const typeDefs = gql`
                         operation: Int
                         created_at: String
                         last_login: String):Employee
-        editUser(       id: ID!
+        editUser(       token: String!
+                        id: ID!
                         username: String
                         password: String
                         token: String
                         nursinghome: ID):User
-        editNursinghome(id: ID!
+        editNursinghome(token: String!
+                        id: ID!
                         name: String):Nursinghome
-        editBranch(     id: ID
+        editBranch(     token: String!
+                        id: ID
                         address: String
                         total_rooms: Int
                         available_rooms: Int
                         nursinghome_idnursinghome: Int  ): Branch
 
-        deleteResident(idNumber: String):String
-        deleteReport(idNumber: ID!):String
-        deleteReportType(idNumber: ID!):String
-        deleteTransaction(idNumber: ID!):String
-        deleteEmployee(idNumber: ID!):String
-        deleteUser(idNumber: ID!):String
-        deleteNursinghome(idNumber: ID!):String
-        deleteBranch(idNumber: ID!):String
+        deleteResident(token: String, idNumber: String):String
+        deleteReport(token: String, idNumber: ID!):String
+        deleteReportType(token: String, idNumber: ID!):String
+        deleteTransaction(token: String, idNumber: ID!):String
+        deleteEmployee(token: String, idNumber: ID!):String
+        deleteUser(token: String, idNumber: ID!):String
+        deleteNursinghome(token: String, idNumber: ID!):String
+        deleteBranch(token: String, idNumber: ID!):String
     }
 `;
 
 const resolvers = {
     Query: {
-        resident: (root, { idNumber }, { dataSources }) => dataSources.ResidentAPI.getAResident(idNumber),
-        residents: (root, args, { dataSources }) => dataSources.ResidentAPI.getAllResidents(),
-        report: (root, { idNumber }, { dataSources }) => dataSources.ReportsAPI.getAReport(idNumber),
-        reports: (root, args, { dataSources }) => dataSources.ReportsAPI.getAllReports(),
-        report_type: (root, { idNumber }, { dataSources }) => dataSources.ReportsAPI.getAType(idNumber),
-        report_types: (root, args, { dataSources }) => dataSources.ReportsAPI.getAllTypes(),
-        transaction: (root, { idNumber }, { dataSources }) => dataSources.TransactionAPI.getATransaction(idNumber),
-        transactions: (root, args, { dataSources }) => dataSources.TransactionAPI.getAllTransactions(),
-        employee: (root, { idNumber }, { dataSources }) => dataSources.EmployeeAPI.getAnEmployee(idNumber),
-        employees: (root, args, { dataSources }) => dataSources.EmployeeAPI.getAllEmployees(),
-        user: (root, { idNumber }, { dataSources }) => dataSources.EmployeeAPI.getAnUser(idNumber),
-        users: (root, args, { dataSources }) => dataSources.EmployeeAPI.getAllUsers(),
-        nursinghome: (root, { idNumber }, { dataSources }) => dataSources.NursingHomesAPI.getANursingHome(idNumber),
-        nursinghomes: (root, args, { dataSources }) => dataSources.NursingHomesAPI.getAllNursingHomes(),
-        branch: (root, { idNumber }, { dataSources }) => dataSources.NursingHomesAPI.getABranch(idNumber),
-        branches: (root, args, { dataSources }) => dataSources.NursingHomesAPI.getAllBranches(),
+        resident: (root, { idNumber, token }, { dataSources }) => dataSources.ResidentAPI.getAResident(idNumber, token),
+        residents: (root, { token }, { dataSources }) => dataSources.ResidentAPI.getAllResidents(token),
+        report: (root, { idNumber, token }, { dataSources }) => dataSources.ReportsAPI.getAReport(idNumber, token),
+        reports: (root, { token }, { dataSources }) => dataSources.ReportsAPI.getAllReports(token),
+        report_type: (root, { idNumber, token }, { dataSources }) => dataSources.ReportsAPI.getAType(idNumber, token),
+        report_types: (root, { token }, { dataSources }) => dataSources.ReportsAPI.getAllTypes(token),
+        transaction: (root, { idNumber, token }, { dataSources }) => dataSources.TransactionAPI.getATransaction(idNumber, token),
+        transactions: (root, { token }, { dataSources }) => dataSources.TransactionAPI.getAllTransactions(token),
+        employee: (root, { idNumber, token }, { dataSources }) => dataSources.EmployeeAPI.getAnEmployee(idNumber, token),
+        employees: (root, { token }, { dataSources }) => dataSources.EmployeeAPI.getAllEmployees(token),
+        user: (root, { idNumber, token }, { dataSources }) => dataSources.EmployeeAPI.getAnUser(idNumber, token),
+        users: (root, { token }, { dataSources }) => dataSources.EmployeeAPI.getAllUsers(token),
+        nursinghome: (root, { idNumber, token }, { dataSources }) => dataSources.NursingHomesAPI.getANursingHome(idNumber, token),
+        nursinghomes: (root, { token }, { dataSources }) => dataSources.NursingHomesAPI.getAllNursingHomes(token),
+        branch: (root, { idNumber, token }, { dataSources }) => dataSources.NursingHomesAPI.getABranch(idNumber, token),
+        branches: (root, { token }, { dataSources }) => dataSources.NursingHomesAPI.getAllBranches(token),
     },
     Mutation: {
         newResident: (root, args, { dataSources }) =>  dataSources.ResidentAPI.createAResident(args),
@@ -244,14 +260,14 @@ const resolvers = {
         editNursinghome: (root, args, { dataSources }) =>  dataSources.NursingHomesAPI.editANursinghome(args),
         editBranch: (root, args, { dataSources }) =>  dataSources.NursingHomesAPI.editABranch(args),
 
-        deleteResident: (root, { idNumber }, { dataSources }) =>  dataSources.ResidentAPI.deleteAResident(idNumber),
-        deleteReport: (root, { idNumber }, { dataSources }) =>  dataSources.ReportsAPI.deleteAReport(idNumber),
-        deleteReportType: (root, { idNumber }, { dataSources }) =>  dataSources.ReportsAPI.deleteAReportType(idNumber),
-        deleteTransaction: (root, { idNumber }, { dataSources }) =>  dataSources.TransactionAPI.deleteATransaction(idNumber),
-        deleteEmployee: (root, { idNumber }, { dataSources }) =>  dataSources.EmployeeAPI.deleteAnEmployee(idNumber),
-        deleteUser: (root, { idNumber }, { dataSources }) =>  dataSources.EmployeeAPI.deleteAnUser(idNumber),
-        deleteNursinghome: (root, { idNumber }, { dataSources }) =>  dataSources.NursingHomesAPI.deleteANursinghome(idNumber),
-        deleteBranch: (root, { idNumber }, { dataSources }) =>  dataSources.NursingHomesAPI.deleteABranch(idNumber),
+        deleteResident: (root, { idNumber, token }, { dataSources }) =>  dataSources.ResidentAPI.deleteAResident(idNumber, token),
+        deleteReport: (root, { idNumber, token }, { dataSources }) =>  dataSources.ReportsAPI.deleteAReport(idNumber, token),
+        deleteReportType: (root, { idNumber, token }, { dataSources }) =>  dataSources.ReportsAPI.deleteAReportType(idNumber, token),
+        deleteTransaction: (root, { idNumber, token }, { dataSources }) =>  dataSources.TransactionAPI.deleteATransaction(idNumber, token),
+        deleteEmployee: (root, { idNumber, token }, { dataSources }) =>  dataSources.EmployeeAPI.deleteAnEmployee(idNumber, token),
+        deleteUser: (root, { idNumber, token }, { dataSources }) =>  dataSources.EmployeeAPI.deleteAnUser(idNumber, token),
+        deleteNursinghome: (root, { idNumber, token }, { dataSources }) =>  dataSources.NursingHomesAPI.deleteANursinghome(idNumber, token),
+        deleteBranch: (root, { idNumber, token }, { dataSources }) =>  dataSources.NursingHomesAPI.deleteABranch(idNumber, token),
     },
     Report: {
         report_type: (root, { report_type_id }, { dataSources }) =>  dataSources.ReportsAPI.getAType(root.report_type_id),
