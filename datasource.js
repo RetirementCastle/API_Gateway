@@ -35,9 +35,12 @@ export class ResidentAPI extends RESTDataSource {
 
     async createAResident(args) {
         if(this.checkToken(args.token)){
+            NursingHomesAPI = new NursingHomesAPI;
 
             args.branchURL = NursingHomesAPI.baseURL;
             args.baseURL = this.baseURL;
+
+            console.log(NursingHomesAPI.baseURL);
 
             var object = await NursingHomesAPI.getABranch(args.branchID, args.token)
 
