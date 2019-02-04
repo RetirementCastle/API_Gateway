@@ -35,22 +35,23 @@ export class ResidentAPI extends RESTDataSource {
 
     async createAResident(args) {
         if(this.checkToken(args.token)){
-            NursingHomesAPI = new NursingHomesAPI();
+            var nurs = new NursingHomesAPI();
 
-            args.branchURL = NursingHomesAPI.baseURL;
+            args.branchURL = nurs.baseURL;
             args.baseURL = this.baseURL;
 
-            console.log(NursingHomesAPI.baseURL);
+            console.log("NursingHomesAPI");
 
-            var object = await NursingHomesAPI.getABranch(args.branchID, args.token)
+            var object = await axios.get(args.branchURL+'branches/'+args.branchID);
 
             new Promise(function(resolve,reject) {
-                axios.put(args.bra
-                    +'branches/'+args.branchID, {
-                address: (object.address),
-                total_rooms: (object.total_rooms),
-                available_rooms: (object.available_rooms - 1),
-                nursinghome_idnursinghome: (object.nursinghome_idnursinghome),
+                console.log(object);
+                console.log(object.data.available_rooms);
+                axios.put(args.branchURL+'branches/'+args.branchID, {
+                    address: (object.data.address),
+                    total_rooms: (object.data.total_rooms),
+                    available_rooms: (object.data.available_rooms - 1),
+                    nursinghome_idnursinghome: (object.data.nursinghome_idnursinghome),
                 })
             })
 
@@ -595,6 +596,7 @@ export class NursingHomesAPI extends RESTDataSource {
         if(this.checkToken(token)){
             const result = await this.get('branches/'+idNumber);
 
+            console.log("f "+result);
             return result;
         }else{
           throw new Error('Token Incorrecto');
