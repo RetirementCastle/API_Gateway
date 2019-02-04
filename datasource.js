@@ -39,7 +39,7 @@ export class ResidentAPI extends RESTDataSource {
             args.branchURL = NursingHomesAPI.baseURL;
             args.baseURL = this.baseURL;
 
-            var object = await this.getABranch(args.branchID, args.token)
+            var object = await NursingHomesAPI.getABranch(args.branchID, args.token)
 
             new Promise(function(resolve,reject) {
                 axios.put(args.bra
