@@ -100,6 +100,7 @@ const typeDefs = gql`
 
     type Mutation {
         newResident(    token:String!
+                        branchID: ID!
                         name: String!
                         birth_date: String!
                         admission_date: String!
@@ -178,7 +179,7 @@ const typeDefs = gql`
                         balance: Int
                         contact_name: String):Transaction
         editEmployee(   token: String!
-                                        id: ID!
+                        id: ID!
                         name: String
                         age: Int
                         title: String

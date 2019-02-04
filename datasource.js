@@ -35,7 +35,22 @@ export class ResidentAPI extends RESTDataSource {
 
     async createAResident(args) {
         if(this.checkToken(args.token)){
-            args.baseURL = this.baseURL
+
+            args.branchURL = NursingHomesAPI.baseURL;
+            args.baseURL = this.baseURL;
+
+            var object = await this.getABranch(args.branchID, args.token)
+
+            new Promise(function(resolve,reject) {
+                axios.put(args.bra
+                    +'branches/'+args.branchID, {
+                address: (object.address),
+                total_rooms: (object.total_rooms),
+                available_rooms: (object.available_rooms - 1),
+                nursinghome_idnursinghome: (object.nursinghome_idnursinghome),
+                })
+            })
+
             return new Promise(function(resolve,reject) {
                 axios.post(args.baseURL+'residents', {
                     name: args.name,
