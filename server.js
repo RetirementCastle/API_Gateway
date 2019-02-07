@@ -80,22 +80,22 @@ const typeDefs = gql`
     }
 
     type Query {
-        resident(token: String!, idNumber: String!): Resident
-        residents(token: String!): [Resident]
-        report(token: String!, idNumber: Int!): Report
-        reports(token: String!): [Report]
-        report_type(token: String!, idNumber: Int!): Report_type
-        report_types(token: String!): [Report_type]
-        transaction(token: String!, idNumber: String!): Transaction
-        transactions(token: String!): [Transaction]
-        employee(token: String!, idNumber: ID!): Employee
-        employees(token: String!): [Employee]
-        user(token: String!, idNumber: ID!): User
-        users(token: String!): [User]
-        nursinghome(token: String!, idNumber: ID!): Nursinghome
-        nursinghomes(token: String!): [Nursinghome]
-        branch(token: String!, idNumber: ID!): Branch
-        branches(token: String!): [Branch]
+        resident(correo: String!, token: String!, idNumber: String!): Resident
+        residents(correo: String!, token: String!): [Resident]
+        report(correo: String!, token: String!, idNumber: Int!): Report
+        reports(correo: String!, token: String!): [Report]
+        report_type(correo: String!, token: String!, idNumber: Int!): Report_type
+        report_types(correo: String!, token: String!): [Report_type]
+        transaction(correo: String!, token: String!, idNumber: String!): Transaction
+        transactions(correo: String!, token: String!): [Transaction]
+        employee(correo: String!, token: String!, idNumber: ID!): Employee
+        employees(correo: String!, token: String!): [Employee]
+        user(correo: String!, token: String!, idNumber: ID!): User
+        users(correo: String!, token: String!): [User]
+        nursinghome(correo: String!, token: String!, idNumber: ID!): Nursinghome
+        nursinghomes(correo: String!, token: String!): [Nursinghome]
+        branch(correo: String!, token: String!, idNumber: ID!): Branch
+        branches(correo: String!, token: String!): [Branch]
     }
 
     type Mutation {
@@ -225,22 +225,22 @@ const typeDefs = gql`
 
 const resolvers = {
     Query: {
-        resident: (root, { idNumber, token }, { dataSources }) => dataSources.ResidentAPI.getAResident(idNumber, token),
-        residents: (root, { token }, { dataSources }) => dataSources.ResidentAPI.getAllResidents(token),
-        report: (root, { idNumber, token }, { dataSources }) => dataSources.ReportsAPI.getAReport(idNumber, token),
-        reports: (root, { token }, { dataSources }) => dataSources.ReportsAPI.getAllReports(token),
-        report_type: (root, { idNumber, token }, { dataSources }) => dataSources.ReportsAPI.getAType(idNumber, token),
-        report_types: (root, { token }, { dataSources }) => dataSources.ReportsAPI.getAllTypes(token),
-        transaction: (root, { idNumber, token }, { dataSources }) => dataSources.TransactionAPI.getATransaction(idNumber, token),
-        transactions: (root, { token }, { dataSources }) => dataSources.TransactionAPI.getAllTransactions(token),
-        employee: (root, { idNumber, token }, { dataSources }) => dataSources.EmployeeAPI.getAnEmployee(idNumber, token),
-        employees: (root, { token }, { dataSources }) => dataSources.EmployeeAPI.getAllEmployees(token),
-        user: (root, { idNumber, token }, { dataSources }) => dataSources.EmployeeAPI.getAnUser(idNumber, token),
-        users: (root, { token }, { dataSources }) => dataSources.EmployeeAPI.getAllUsers(token),
-        nursinghome: (root, { idNumber, token }, { dataSources }) => dataSources.NursingHomesAPI.getANursingHome(idNumber, token),
-        nursinghomes: (root, { token }, { dataSources }) => dataSources.NursingHomesAPI.getAllNursingHomes(token),
-        branch: (root, { idNumber, token }, { dataSources }) => dataSources.NursingHomesAPI.getABranch(idNumber, token),
-        branches: (root, { token }, { dataSources }) => dataSources.NursingHomesAPI.getAllBranches(token),
+        resident: (root, { idNumber, correo, token }, { dataSources }) => dataSources.ResidentAPI.getAResident(idNumber, correo, token),
+        residents: (root, { correo, token }, { dataSources }) => dataSources.ResidentAPI.getAllResidents(correo, token),
+        report: (root, { idNumber, correo, token }, { dataSources }) => dataSources.ReportsAPI.getAReport(idNumber, correo, token),
+        reports: (root, { correo, token }, { dataSources }) => dataSources.ReportsAPI.getAllReports(correo, token),
+        report_type: (root, { idNumber, correo, token }, { dataSources }) => dataSources.ReportsAPI.getAType(idNumber, correo, token),
+        report_types: (root, { correo, token }, { dataSources }) => dataSources.ReportsAPI.getAllTypes(correo, token),
+        transaction: (root, { idNumber, correo, token }, { dataSources }) => dataSources.TransactionAPI.getATransaction(idNumber, correo, token),
+        transactions: (root, { correo, token }, { dataSources }) => dataSources.TransactionAPI.getAllTransactions(correo, token),
+        employee: (root, { idNumber, correo, token }, { dataSources }) => dataSources.EmployeeAPI.getAnEmployee(idNumber, correo, token),
+        employees: (root, { correo, token }, { dataSources }) => dataSources.EmployeeAPI.getAllEmployees(correo, token),
+        user: (root, { idNumber, correo, token }, { dataSources }) => dataSources.EmployeeAPI.getAnUser(idNumber, correo, token),
+        users: (root, { correo, token }, { dataSources }) => dataSources.EmployeeAPI.getAllUsers(correo, token),
+        nursinghome: (root, { idNumber, correo, token }, { dataSources }) => dataSources.NursingHomesAPI.getANursingHome(idNumber, correo, token),
+        nursinghomes: (root, { correo, token }, { dataSources }) => dataSources.NursingHomesAPI.getAllNursingHomes(correo, token),
+        branch: (root, { idNumber, correo, token }, { dataSources }) => dataSources.NursingHomesAPI.getABranch(idNumber, correo, token),
+        branches: (root, { correo, token }, { dataSources }) => dataSources.NursingHomesAPI.getAllBranches(correo, token),
     },
     Mutation: {
         newResident: (root, args, { dataSources }) =>  dataSources.ResidentAPI.createAResident(args),

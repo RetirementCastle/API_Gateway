@@ -8,23 +8,39 @@ export class ResidentAPI extends RESTDataSource {
         this.baseURL = 'http://node_be:3000/';
     }
 
-    checkToken(token){
-      if(token=="sasa"){
-        return true;
-      }
-      return false;
+    checkToken(correo, token){
+        var url = 'http://ms-users-rails-kevinandrey96.c9users.io/';
+        if(token=="sasa"){
+            return "true";
+        }else{
+            return new Promise(function(resolve,reject) {
+                axios.post(url+'validator', {
+                    email: correo,
+                    token: token
+                })
+                .then((res) => {
+                    console.log(res.data);
+                    console.log(res.data);
+                    resolve(res.data.response.status);
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
+            })
+        }
     }
 
-    async getAllResidents(token) {
-        if(this.checkToken(token)){
+    async getAllResidents(correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
+            console.log("pasa");
             return this.get('residents');
         }else{
           throw new Error('Token Incorrecto');
         }
     }
 
-    async getAResident(idNumber, token) {
-        if(this.checkToken(token)){
+    async getAResident(idNumber, correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('residents/'+idNumber);
 
             return result;
@@ -123,31 +139,46 @@ export class ReportsAPI extends RESTDataSource {
         this.baseURL = 'http://ruby_be:3030/';
     }
 
-    checkToken(token){
+    checkToken(correo, token){
+        var url = 'http://ms-users-rails-kevinandrey96.c9users.io/';
         if(token=="sasa"){
-            return true;
+            return "true";
+        }else{
+            return new Promise(function(resolve,reject) {
+                axios.post(url+'validator', {
+                    email: correo,
+                    token: token
+                })
+                .then((res) => {
+                    console.log(res.data);
+                    console.log(res.data);
+                    resolve(res.data.response.status);
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
+            })
         }
-        return false;
     }
 
-    async getAllReports(token) {
-        if(this.checkToken(token)){
+    async getAllReports(correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             return this.get('reports');
         }else{
           throw new Error('Token Incorrecto');
         }
     }
 
-    async getAllTypes(token) {
-        if(this.checkToken(token)){
+    async getAllTypes(correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             return this.get('report_types');
         }else{
           throw new Error('Token Incorrecto');
         }
     }
 
-    async getAReport(idNumber, token) {
-        if(this.checkToken(token)){
+    async getAReport(idNumber, correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('reports/'+idNumber);
 
             return result;
@@ -156,8 +187,8 @@ export class ReportsAPI extends RESTDataSource {
         }
     }
 
-    async getAType(idNumber, token) {
-        if(this.checkToken(token)){
+    async getAType(idNumber, correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('report_types/'+idNumber);
             return result;
         }else{
@@ -274,15 +305,30 @@ export class TransactionAPI extends RESTDataSource {
         this.baseURL = 'http://php_be:80/';
     }
 
-    checkToken(token){
+    checkToken(correo, token){
+        var url = 'http://ms-users-rails-kevinandrey96.c9users.io/';
         if(token=="sasa"){
-            return true;
+            return "true";
+        }else{
+            return new Promise(function(resolve,reject) {
+                axios.post(url+'validator', {
+                    email: correo,
+                    token: token
+                })
+                .then((res) => {
+                    console.log(res.data);
+                    console.log(res.data);
+                    resolve(res.data.response.status);
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
+            })
         }
-        return false;
     }
 
-    async getAllTransactions(token) {
-        if(this.checkToken(token)){
+    async getAllTransactions(correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('transaction/');
             return result["results"];
         }else{
@@ -290,8 +336,8 @@ export class TransactionAPI extends RESTDataSource {
         }
     }
 
-    async getATransaction(idNumber, token) {
-        if(this.checkToken(token)){
+    async getATransaction(idNumber, correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('transaction/'+idNumber);
 
             return result;
@@ -369,15 +415,30 @@ export class EmployeeAPI extends RESTDataSource {
         this.baseURL = 'http://python_be:8005/';
     }
 
-    checkToken(token){
+    checkToken(correo, token){
+        var url = 'http://ms-users-rails-kevinandrey96.c9users.io/';
         if(token=="sasa"){
-            return true;
+            return "true";
+        }else{
+            return new Promise(function(resolve,reject) {
+                axios.post(url+'validator', {
+                    email: correo,
+                    token: token
+                })
+                .then((res) => {
+                    console.log(res.data);
+                    console.log(res.data);
+                    resolve(res.data.response.status);
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
+            })
         }
-        return false;
     }
 
-    async getAllEmployees(token) {
-        if(this.checkToken(token)){
+    async getAllEmployees(correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('employees/');
             return result;
         }else{
@@ -385,8 +446,8 @@ export class EmployeeAPI extends RESTDataSource {
         }
     }
 
-    async getAllUsers(token) {
-        if(this.checkToken(token)){
+    async getAllUsers(correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('users/');
             return result;
         }else{
@@ -394,8 +455,8 @@ export class EmployeeAPI extends RESTDataSource {
         }
     }
 
-    async getAnEmployee(idNumber, token) {
-        if(this.checkToken(token)){
+    async getAnEmployee(idNumber,correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('employees/'+idNumber);
 
             return result;
@@ -404,8 +465,8 @@ export class EmployeeAPI extends RESTDataSource {
         }
     }
 
-    async getAnUser(idNumber, token) {
-        if(this.checkToken(token)){
+    async getAnUser(idNumber,correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('users/'+idNumber);
 
             return result;
@@ -557,15 +618,30 @@ export class NursingHomesAPI extends RESTDataSource {
         this.baseURL = 'http://go_be:8087/';
     }
 
-    checkToken(token){
+    checkToken(correo, token){
+        var url = 'http://ms-users-rails-kevinandrey96.c9users.io/';
         if(token=="sasa"){
-            return true;
+            return "true";
+        }else{
+            return new Promise(function(resolve,reject) {
+                axios.post(url+'validator', {
+                    email: correo,
+                    token: token
+                })
+                .then((res) => {
+                    console.log(res.data);
+                    console.log(res.data);
+                    resolve(res.data.response.status);
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
+            })
         }
-        return false;
     }
 
-    async getAllNursingHomes(token) {
-        if(this.checkToken(token)){
+    async getAllNursingHomes(correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('nursinghomes');
             return result;
         }else{
@@ -573,8 +649,8 @@ export class NursingHomesAPI extends RESTDataSource {
         }
     }
 
-    async getAllBranches(token) {
-        if(this.checkToken(token)){
+    async getAllBranches(correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('branches');
             return result;
         }else{
@@ -582,8 +658,8 @@ export class NursingHomesAPI extends RESTDataSource {
         }
     }
 
-    async getANursingHome(idNumber, token) {
-        if(this.checkToken(token)){
+    async getANursingHome(idNumber, correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('nursinghome/'+idNumber);
 
             return result;
@@ -592,8 +668,8 @@ export class NursingHomesAPI extends RESTDataSource {
         }
     }
 
-    async getABranch(idNumber, token) {
-        if(this.checkToken(token)){
+    async getABranch(idNumber, correo, token) {
+        if(await this.checkToken(correo, token)=='true'){
             const result = await this.get('branches/'+idNumber);
 
             console.log("f "+result);
