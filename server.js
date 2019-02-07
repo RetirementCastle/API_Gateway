@@ -141,7 +141,7 @@ const typeDefs = gql`
                         identification: String
                         phone: String
                         ip: String
-                        token: String
+                        newtoken: String
                         operation: Int
                         created_at: String
                         last_login: String): String
@@ -149,7 +149,7 @@ const typeDefs = gql`
                         token:String!
                         username: String
                         password: String
-                        token: String
+                        newtoken: String
                         nursinghome: ID  ): String
         newNursinghome( correo:String!
                         token:String!
@@ -161,7 +161,8 @@ const typeDefs = gql`
                         available_rooms: Int
                         nursinghome_idnursinghome: Int  ): Branch
 
-        editResident(   token: String!
+        editResident(   correo: String!
+                        token: String!
                         _id: ID!
                         name: String
                         birth_date: String
@@ -171,22 +172,26 @@ const typeDefs = gql`
                         contact_name: String
                         contact_phone: Int
                         diseases: String): Resident
-        editReport(     token: String!
+        editReport(     correo: String!
+                        token: String!
                         id: ID!
                         report_type: Int
                         created_at: String
                         IP: String): Report
-        editReportType( token: String!
+        editReportType( correo: String!
+                        token: String!
                         id: ID!
                         Type: String): Report_type
-        editTransaction(token: String!
+        editTransaction(correo: String!
+                        token: String!
                         id: ID!
                         type_transation_id: Int
                         total_amount: Int
                         observation: String
                         balance: Int
                         contact_name: String):Transaction
-        editEmployee(   token: String!
+        editEmployee(   correo: String!
+                        token: String!
                         id: ID!
                         name: String
                         age: Int
@@ -204,16 +209,19 @@ const typeDefs = gql`
                         operation: Int
                         created_at: String
                         last_login: String):Employee
-        editUser(       token: String!
+        editUser(       correo: String!
+                        token: String!
                         id: ID!
                         username: String
                         password: String
                         token: String
                         nursinghome: ID):User
-        editNursinghome(token: String!
+        editNursinghome(correo: String!
+                        token: String!
                         id: ID!
                         name: String):Nursinghome
-        editBranch(     token: String!
+        editBranch(     correo: String!
+                        token: String!
                         id: ID
                         address: String
                         total_rooms: Int

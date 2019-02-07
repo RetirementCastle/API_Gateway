@@ -95,7 +95,7 @@ export class ResidentAPI extends RESTDataSource {
 
     async editAResident(args) {
         console.log(this.checkToken(args.token));
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             var object = await this.getAResident(args._id, args.token)
 
             args.baseURL = this.baseURL
@@ -237,7 +237,7 @@ export class ReportsAPI extends RESTDataSource {
     }
 
     async editAReport(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             var object = await this.getAReport(args.id, args.token)
 
             args.baseURL = this.baseURL
@@ -260,7 +260,7 @@ export class ReportsAPI extends RESTDataSource {
     }
 
     async editAReportType(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             var object = await this.getAType(args.id, args.token)
 
             args.baseURL = this.baseURL
@@ -375,7 +375,7 @@ export class TransactionAPI extends RESTDataSource {
     }
 
     async editATransaction(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             var object = await this.getATransaction(args.id, args.token)
 
             args.baseURL = this.baseURL
@@ -532,7 +532,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     async editAnEmployee(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             var object = await this.getAnEmployee(args.id, args.token);
 
             args.baseURL = this.baseURL;
@@ -569,7 +569,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     async editAnUser(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             var object = await this.getAnEmployee(args.id, args.token);
 
             args.baseURL = this.baseURL;
@@ -721,7 +721,7 @@ export class NursingHomesAPI extends RESTDataSource {
     }
 
     async editANursinghome(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             var object = await this.getANursingHome(args.id, args.token)
 
             args.baseURL = this.baseURL
@@ -742,7 +742,7 @@ export class NursingHomesAPI extends RESTDataSource {
     }
 
     async editABranch(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             var object = await this.getABranch(args.id, args.token)
 
             args.baseURL = this.baseURL
