@@ -124,7 +124,7 @@ export class ResidentAPI extends RESTDataSource {
 
     async deleteAResident(idNumber, token) {
         console.log(token);
-        if(this.checkToken(token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             this.delete('residents/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -281,7 +281,7 @@ export class ReportsAPI extends RESTDataSource {
     }
 
     async deleteAReport(idNumber, token) {
-        if(this.checkToken(token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             this.delete('reports/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -290,7 +290,7 @@ export class ReportsAPI extends RESTDataSource {
     }
 
     async deleteAReportType(idNumber, token) {
-        if(this.checkToken(token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             this.delete('report_types/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -400,7 +400,7 @@ export class TransactionAPI extends RESTDataSource {
     }
 
     async deleteATransaction(idNumber, token) {
-        if(this.checkToken(token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             this.delete('transaction/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -594,7 +594,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     async deleteAnEmployee(idNumber, token) {
-        if(this.checkToken(token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             this.delete('employees/'+idNumber+'/');
             return "Deleted successfully"
         }else{
@@ -603,7 +603,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     async deleteAnUser(idNumber, token) {
-        if(this.checkToken(token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             this.delete('users/'+idNumber+'/');
             return "Deleted successfully"
         }else{
@@ -766,7 +766,7 @@ export class NursingHomesAPI extends RESTDataSource {
     }
 
     async deleteANursinghome(idNumber, token) {
-        if(this.checkToken(token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             this.delete('nursinghome/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -775,7 +775,7 @@ export class NursingHomesAPI extends RESTDataSource {
     }
 
     async deleteABranch(idNumber, token) {
-        if(this.checkToken(token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             this.delete('branches/'+idNumber)
             return "Deleted successfully"
         }else{

@@ -228,14 +228,14 @@ const typeDefs = gql`
                         available_rooms: Int
                         nursinghome_idnursinghome: Int  ): Branch
 
-        deleteResident(token: String, idNumber: String):String
-        deleteReport(token: String, idNumber: ID!):String
-        deleteReportType(token: String, idNumber: ID!):String
-        deleteTransaction(token: String, idNumber: ID!):String
-        deleteEmployee(token: String, idNumber: ID!):String
-        deleteUser(token: String, idNumber: ID!):String
-        deleteNursinghome(token: String, idNumber: ID!):String
-        deleteBranch(token: String, idNumber: ID!):String
+        deleteResident(correo: String!, token: String!, idNumber: String):String
+        deleteReport(correo: String!, token: String!, idNumber: ID!):String
+        deleteReportType(correo: String!, token: String!, idNumber: ID!):String
+        deleteTransaction(correo: String!, token: String!, idNumber: ID!):String
+        deleteEmployee(correo: String!, token: String!, idNumber: ID!):String
+        deleteUser(correo: String!, token: String!, idNumber: ID!):String
+        deleteNursinghome(correo: String!, token: String!, idNumber: ID!):String
+        deleteBranch(correo: String!, token: String!, idNumber: ID!):String
     }
 `;
 
