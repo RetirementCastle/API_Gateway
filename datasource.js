@@ -96,7 +96,7 @@ export class ResidentAPI extends RESTDataSource {
     async editAResident(args) {
         console.log(this.checkToken(args.token));
         if(await this.checkToken(args.correo, args.token)=='true'){
-            var object = await this.getAResident(args._id, args.token)
+            var object = await this.getAResident(args._id, args.correo, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
@@ -122,9 +122,9 @@ export class ResidentAPI extends RESTDataSource {
         }
     }
 
-    async deleteAResident(idNumber, token) {
+    async deleteAResident(correo, token, idNumber) {
         console.log(token);
-        if(await this.checkToken(args.correo, args.token)=='true'){
+        if(await this.checkToken(correo, token)=='true'){
             this.delete('residents/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -238,7 +238,7 @@ export class ReportsAPI extends RESTDataSource {
 
     async editAReport(args) {
         if(await this.checkToken(args.correo, args.token)=='true'){
-            var object = await this.getAReport(args.id, args.token)
+            var object = await this.getAReport(args.id, args.correo, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
@@ -261,7 +261,7 @@ export class ReportsAPI extends RESTDataSource {
 
     async editAReportType(args) {
         if(await this.checkToken(args.correo, args.token)=='true'){
-            var object = await this.getAType(args.id, args.token)
+            var object = await this.getAType(args.id, args.correo, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
@@ -280,8 +280,8 @@ export class ReportsAPI extends RESTDataSource {
         }
     }
 
-    async deleteAReport(idNumber, token) {
-        if(await this.checkToken(args.correo, args.token)=='true'){
+    async deleteAReport(correo, token, idNumber) {
+        if(await this.checkToken(correo, token)=='true'){
             this.delete('reports/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -289,8 +289,8 @@ export class ReportsAPI extends RESTDataSource {
         }
     }
 
-    async deleteAReportType(idNumber, token) {
-        if(await this.checkToken(args.correo, args.token)=='true'){
+    async deleteAReportType(correo, token, idNumber) {
+        if(await this.checkToken(correo, token)=='true'){
             this.delete('report_types/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -376,7 +376,7 @@ export class TransactionAPI extends RESTDataSource {
 
     async editATransaction(args) {
         if(await this.checkToken(args.correo, args.token)=='true'){
-            var object = await this.getATransaction(args.id, args.token)
+            var object = await this.getATransaction(args.id, args.correo, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
@@ -399,8 +399,8 @@ export class TransactionAPI extends RESTDataSource {
         }
     }
 
-    async deleteATransaction(idNumber, token) {
-        if(await this.checkToken(args.correo, args.token)=='true'){
+    async deleteATransaction(correo, token, idNumber) {
+        if(await this.checkToken(correo, token)=='true'){
             this.delete('transaction/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -533,7 +533,7 @@ export class EmployeeAPI extends RESTDataSource {
 
     async editAnEmployee(args) {
         if(await this.checkToken(args.correo, args.token)=='true'){
-            var object = await this.getAnEmployee(args.id, args.token);
+            var object = await this.getAnEmployee(args.id, args.correo, args.token);
 
             args.baseURL = this.baseURL;
             return new Promise(function(resolve,reject) {
@@ -570,7 +570,7 @@ export class EmployeeAPI extends RESTDataSource {
 
     async editAnUser(args) {
         if(await this.checkToken(args.correo, args.token)=='true'){
-            var object = await this.getAnEmployee(args.id, args.token);
+            var object = await this.getAnEmployee(args.id, args.correo, args.token);
 
             args.baseURL = this.baseURL;
             return new Promise(function(resolve,reject) {
@@ -593,8 +593,8 @@ export class EmployeeAPI extends RESTDataSource {
         }
     }
 
-    async deleteAnEmployee(idNumber, token) {
-        if(await this.checkToken(args.correo, args.token)=='true'){
+    async deleteAnEmployee(correo, token, idNumber) {
+        if(await this.checkToken(correo, token)=='true'){
             this.delete('employees/'+idNumber+'/');
             return "Deleted successfully"
         }else{
@@ -602,8 +602,8 @@ export class EmployeeAPI extends RESTDataSource {
         }
     }
 
-    async deleteAnUser(idNumber, token) {
-        if(await this.checkToken(args.correo, args.token)=='true'){
+    async deleteAnUser(correo, token, idNumber) {
+        if(await this.checkToken(correo, token)=='true'){
             this.delete('users/'+idNumber+'/');
             return "Deleted successfully"
         }else{
@@ -722,7 +722,7 @@ export class NursingHomesAPI extends RESTDataSource {
 
     async editANursinghome(args) {
         if(await this.checkToken(args.correo, args.token)=='true'){
-            var object = await this.getANursingHome(args.id, args.token)
+            var object = await this.getANursingHome(args.id, args.correo, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
@@ -743,7 +743,7 @@ export class NursingHomesAPI extends RESTDataSource {
 
     async editABranch(args) {
         if(await this.checkToken(args.correo, args.token)=='true'){
-            var object = await this.getABranch(args.id, args.token)
+            var object = await this.getABranch(args.id, args.correo, args.token)
 
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
@@ -765,8 +765,8 @@ export class NursingHomesAPI extends RESTDataSource {
         }
     }
 
-    async deleteANursinghome(idNumber, token) {
-        if(await this.checkToken(args.correo, args.token)=='true'){
+    async deleteANursinghome(correo, token, idNumber) {
+        if(await this.checkToken(correo, token)=='true'){
             this.delete('nursinghome/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -774,8 +774,8 @@ export class NursingHomesAPI extends RESTDataSource {
         }
     }
 
-    async deleteABranch(idNumber, token) {
-        if(await this.checkToken(args.correo, args.token)=='true'){
+    async deleteABranch(correo, token, idNumber) {
+        if(await this.checkToken(correo, token)=='true'){
             this.delete('branches/'+idNumber)
             return "Deleted successfully"
         }else{
