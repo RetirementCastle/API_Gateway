@@ -50,7 +50,7 @@ export class ResidentAPI extends RESTDataSource {
     }
 
     async createAResident(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             var nurs = new NursingHomesAPI();
 
             args.branchURL = nurs.baseURL;
@@ -197,7 +197,7 @@ export class ReportsAPI extends RESTDataSource {
     }
 
     async createAReport(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
                 axios.post(args.baseURL+'reports', {
@@ -218,7 +218,7 @@ export class ReportsAPI extends RESTDataSource {
     }
 
     async createAReportType(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
                 axios.post(args.baseURL+'report_types', {
@@ -347,7 +347,7 @@ export class TransactionAPI extends RESTDataSource {
     }
 
     async createATransaction(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
                 axios.post(args.baseURL+'transaction', {
@@ -476,7 +476,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     async createAnEmployee(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
                 axios.post(args.baseURL+'employees/', {
@@ -510,7 +510,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     async createAnUser(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
                 axios.post(args.baseURL+'users/', {
@@ -680,7 +680,7 @@ export class NursingHomesAPI extends RESTDataSource {
     }
 
     async createANursingHome(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
                 axios.post(args.baseURL+'nursinghomes', {
@@ -699,7 +699,7 @@ export class NursingHomesAPI extends RESTDataSource {
     }
 
     async createABranch(args) {
-        if(this.checkToken(args.token)){
+        if(await this.checkToken(args.correo, args.token)=='true'){
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
                 axios.post(args.baseURL+'branches', {

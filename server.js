@@ -99,7 +99,8 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        newResident(    token:String!
+        newResident(    correo:String!
+                        token:String!
                         branchID: ID!
                         name: String!
                         birth_date: String!
@@ -109,13 +110,16 @@ const typeDefs = gql`
                         contact_name: String
                         contact_phone: Int
                         diseases: String): Resident
-        newReport(      token:String!
+        newReport(      correo:String!
+                        token:String!
                         report_type: Int
                         created_at: String
                         IP: String): Report
-        newReportType(  token:String!
+        newReportType(  correo:String!
+                        token:String!
                         Type: String): Report_type
-        newTransaction( token:String!
+        newTransaction( correo:String!
+                        token:String!
                         type_transation_id: Int!
                         total_amount: Int
                         observation: String
@@ -123,7 +127,8 @@ const typeDefs = gql`
                         contact_name: String
                         quantity: Int
                         subtotal: Int): String
-        newEmployee(    token:String!
+        newEmployee(    correo:String!
+                        token:String!
                         name: String
                         age: Int
                         title: String
@@ -140,14 +145,17 @@ const typeDefs = gql`
                         operation: Int
                         created_at: String
                         last_login: String): String
-        newUser(        token:String!
+        newUser(        correo:String!
+                        token:String!
                         username: String
                         password: String
                         token: String
                         nursinghome: ID  ): String
-        newNursinghome( token:String!
+        newNursinghome( correo:String!
+                        token:String!
                         name: String ): Nursinghome
-        newBranch(      token:String!
+        newBranch(      correo:String!
+                        token:String!
                         address: String
                         total_rooms: Int
                         available_rooms: Int
