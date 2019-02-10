@@ -5,11 +5,11 @@ const axios = require('axios')
 export class ResidentAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://node_be:3000/';
+        this.baseURL = 'http://localhost:3000/';
     }
 
     checkToken(correo, token){
-        var url = 'http://ms-users-rails-kevinandrey96.c9users.io/';
+        var url = 'http://localhost:3000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -125,6 +125,7 @@ export class ResidentAPI extends RESTDataSource {
     async deleteAResident(correo, token, idNumber) {
         console.log(token);
         if(await this.checkToken(correo, token)=='true'){
+            console.log(token);
             this.delete('residents/'+idNumber)
             return "Deleted successfully"
         }else{
@@ -140,7 +141,7 @@ export class ReportsAPI extends RESTDataSource {
     }
 
     checkToken(correo, token){
-        var url = 'http://ms-users-rails-kevinandrey96.c9users.io/';
+        var url = 'http://localhost:3000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -306,7 +307,7 @@ export class TransactionAPI extends RESTDataSource {
     }
 
     checkToken(correo, token){
-        var url = 'http://ms-users-rails-kevinandrey96.c9users.io/';
+        var url = 'http://localhost:3000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -416,7 +417,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     checkToken(correo, token){
-        var url = 'http://ms-users-rails-kevinandrey96.c9users.io/';
+        var url = 'http://localhost:3000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -619,7 +620,7 @@ export class NursingHomesAPI extends RESTDataSource {
     }
 
     checkToken(correo, token){
-        var url = 'http://ms-users-rails-kevinandrey96.c9users.io/';
+        var url = 'http://localhost:3000/';
         if(token=="sasa"){
             return "true";
         }else{
