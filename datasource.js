@@ -9,7 +9,7 @@ export class ResidentAPI extends RESTDataSource {
     }
 
     checkToken(correo, token){
-        var url = 'http://users_be:9000/';
+        var url = 'http://users:9000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -140,7 +140,7 @@ export class ReportsAPI extends RESTDataSource {
     }
 
     checkToken(correo, token){
-        var url = 'http://users_be:9000/';
+        var url = 'http://users:9000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -306,7 +306,7 @@ export class TransactionAPI extends RESTDataSource {
     }
 
     checkToken(correo, token){
-        var url = 'http://users_be:9000/';
+        var url = 'http://users:9000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -416,7 +416,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     checkToken(correo, token){
-        var url = 'http://users_be:9000/';
+        var url = 'http://users:9000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -491,7 +491,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     async createAnUser(args) {
-        args.baseURL = "http://users_be:9000/"
+        args.baseURL = "http://users:9000/"
         return new Promise(function(resolve,reject) {
             axios.post(args.baseURL+'signup/', {
                 user:{
@@ -512,7 +512,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     async login(args) {
-        args.baseURL = "http://users_be:9000/"
+        args.baseURL = "http://users:9000/"
         return new Promise(function(resolve,reject) {
             axios.post(args.baseURL+'login/', {
                 user:{
@@ -583,7 +583,7 @@ export class NursingHomesAPI extends RESTDataSource {
     }
 
     checkToken(correo, token){
-        var url = 'http://users_be:9000/';
+        var url = 'http://users:9000/';
         if(token=="sasa"){
             return "true";
         }else{
