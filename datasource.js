@@ -5,11 +5,11 @@ const axios = require('axios')
 export class ResidentAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://node_be:3000/';
+        this.baseURL = 'http://rc_residents_ms:3000/';
     }
 
     checkToken(correo, token){
-        var url = 'http://users:9000/';
+        var url = 'http://rc_users_ms:9000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -136,11 +136,11 @@ export class ResidentAPI extends RESTDataSource {
 export class ReportsAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://ruby_be:3030/';
+        this.baseURL = 'http://rc_reports_ms:3030/';
     }
 
     checkToken(correo, token){
-        var url = 'http://users:9000/';
+        var url = 'http://rc_users_ms:9000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -302,11 +302,11 @@ export class ReportsAPI extends RESTDataSource {
 export class TransactionAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://php_be:80/';
+        this.baseURL = 'http://rc_transactions_ms:80/';
     }
 
     checkToken(correo, token){
-        var url = 'http://users:9000/';
+        var url = 'http://rc_users_ms:9000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -412,11 +412,11 @@ export class TransactionAPI extends RESTDataSource {
 export class EmployeeAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://python_be:8005/';
+        this.baseURL = 'http://rc_users_ms:8005/';
     }
 
     checkToken(correo, token){
-        var url = 'http://users:9000/';
+        var url = 'http://rc_users_mss:9000/';
         if(token=="sasa"){
             return "true";
         }else{
@@ -491,7 +491,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     async createAnUser(args) {
-        args.baseURL = "http://users:9000/"
+        args.baseURL = "http://rc_users_ms:9000/"
         return new Promise(function(resolve,reject) {
             axios.post(args.baseURL+'signup/', {
                 user:{
@@ -512,7 +512,7 @@ export class EmployeeAPI extends RESTDataSource {
     }
 
     async login(args) {
-        args.baseURL = "http://users:9000/"
+        args.baseURL = "http://rc_users_ms:9000/"
         return new Promise(function(resolve,reject) {
             axios.post(args.baseURL+'login/', {
                 user:{
@@ -579,11 +579,11 @@ export class EmployeeAPI extends RESTDataSource {
 export class NursingHomesAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://go_be:8087/';
+        this.baseURL = 'http://rc_nursinghomes_ms:8087/';
     }
 
     checkToken(correo, token){
-        var url = 'http://users:9000/';
+        var url = 'http://rc_users_ms:9000/';
         if(token=="sasa"){
             return "true";
         }else{
