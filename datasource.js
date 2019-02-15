@@ -302,7 +302,7 @@ export class ReportsAPI extends RESTDataSource {
 export class TransactionAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://rc_transactions_ms:80/';
+        this.baseURL = 'http://10.142.0.4:8081/';
     }
 
     checkToken(correo, token){
