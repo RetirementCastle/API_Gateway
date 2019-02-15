@@ -136,7 +136,7 @@ export class ResidentAPI extends RESTDataSource {
 export class ReportsAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://rc_reports_ms:3030/api/v1/';
+        this.baseURL = 'http://rc_reports_ms:8000/api/v1/';
     }
 
     checkToken(correo, token){
