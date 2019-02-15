@@ -136,7 +136,7 @@ export class ResidentAPI extends RESTDataSource {
 export class ReportsAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://rc_reports_ms:3030/';
+        this.baseURL = 'http://rc_reports_ms:3030/api/v1/';
     }
 
     checkToken(correo, token){
@@ -201,9 +201,9 @@ export class ReportsAPI extends RESTDataSource {
             args.baseURL = this.baseURL
             return new Promise(function(resolve,reject) {
                 axios.post(args.baseURL+'reports', {
-                    report_type_id: args.report_type,
-                    created_at: args.created_at,
-                    IP: args.IP,
+                    name: args.name,
+                    r_type: args.r_type,
+                    ip: args.ip,
                 })
                 .then((res) => {
                     resolve(res.data);

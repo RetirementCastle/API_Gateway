@@ -23,9 +23,9 @@ const typeDefs = gql`
 
     type Report {
         id: ID!
-        report_type: Report_type
-        created_at: String
-        IP: String
+        name: String
+        r_type: String
+        ip: String
     }
 
     type Transaction {
@@ -121,9 +121,9 @@ const typeDefs = gql`
                         diseases: String): Resident
         newReport(      correo:String!
                         token:String!
-                        report_type: Int
-                        created_at: String
-                        IP: String): Report
+                        name: String
+                        r_type: String
+                        ip: String): Report
         newReportType(  correo:String!
                         token:String!
                         Type: String): Report_type
@@ -185,9 +185,9 @@ const typeDefs = gql`
         editReport(     correo: String!
                         token: String!
                         id: ID!
-                        report_type: Int
-                        created_at: String
-                        IP: String): Report
+                        name: String
+                        r_type: String
+                        ip: String): Report
         editReportType( correo: String!
                         token: String!
                         id: ID!
@@ -284,9 +284,6 @@ const resolvers = {
         deleteEmployee: (root, { correo, token, idNumber }, { dataSources }) =>  dataSources.EmployeeAPI.deleteAnEmployee(correo, token, idNumber),
         deleteNursinghome: (root, { correo, token, idNumber }, { dataSources }) =>  dataSources.NursingHomesAPI.deleteANursinghome(correo, token, idNumber),
         deleteBranch: (root, { correo, token, idNumber }, { dataSources }) =>  dataSources.NursingHomesAPI.deleteABranch(correo, token, idNumber),
-    },
-    Report: {
-        report_type: (root, { report_type_id }, { dataSources }) =>  dataSources.ReportsAPI.getAType(root.report_type_id),
     },
     Nursinghome: {
         branches: (root, { idnursinghome }, { dataSources }) =>  dataSources.NursingHomesAPI.getNursinghomesBranches(root.idnursinghome),
